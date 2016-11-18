@@ -11,11 +11,10 @@ $(document).ready(function(){
         success: function (msg){
             if(msg == 2){
                 $('#middleTitle').text("Algunos empleos para ti");
-              $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No se han encontrado vacantes!</strong> <a href='#' class='alert-link'>Pero no te precupes seguiremos buscando la mejor opcion para ti</a></div>");
+                $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No se han encontrado vacantes!</strong> <a href='#' class='alert-link'>Pero no te precupes seguiremos buscando la mejor opcion para ti</a></div>");
             }else{
-
-            $('#middleTitle').text("Algunos empleos para ti");
-            $('#middlePanel').html(msg);
+                $('#middleTitle').text("Algunos empleos para ti");
+                $('#middlePanel').html(msg);
             }
         },
         error: function (jqXHR,status,error) {
@@ -61,7 +60,8 @@ $(document).on('click','#postulateToVacancy',function(){
        $('#stateMessage').html("");
        $('#middlePanel').html("");
        $('#middlePanel').html("<div class='list-group'>"
-                                        +"<a href='#' id='schoolingInformation' class='list-group-item active' role='button' data-toggle='modal' data-target='#myModal'>Información Académica </a>"
+                                        +"<a href='#' id='schoolingInformation' class='list-group-item active' role='button'>Información Académica </a>"
+                                        +"<div id='displayAcademic'></div>"
                                         +"<a href='#' id='professionalInformation' class='list-group-item'>Información Profesionales</a>"
                                           +"<a href='#' id='courses' class='list-group-item'>Cursos</a>"
                                           +"<a href='#' id='workingExperience' class='list-group-item'>Experiencia Laboral</a>"
@@ -80,8 +80,7 @@ $(document).on('click','#schoolingInformation',function(){
         type: "POST",
         data: {flg:flag},
         success: function(msg){
-            $('#myModalTitle').html("Actualizar Información Académica");
-            $('#modalBodyUpdate').html(msg);
+            $('#displayAcademic').html(msg);
         },
         error: function(jqXHR,error,status){
 
@@ -90,6 +89,11 @@ $(document).on('click','#schoolingInformation',function(){
             $('#spinner').attr('class','');
         }
     });
+});
+
+$(document).on('click','#updateAcademicBtn',function(){
+    var uno=$('#txtAcademicData').val();
+    alert(uno);
 });
 
 

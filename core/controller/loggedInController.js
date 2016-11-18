@@ -31,13 +31,13 @@ $(document).ready(function() {
         success: function(msg) {
 
             if (msg == 1) {
-                //Empresa
-                $('#panelContent').html("<div class='btn-group-vertical' role='group'>"
-                                    +"<button type='button' class='btn btn-white' id='postVacancy'>Publicar</button>"
-                                    +"<button type='button' class='btn btn-white' id='reviewPost'>Revisar Vacantes Publicadas</button>"
-                                    +"<button type='button' class='btn btn-white' id='companyMessage'>Mensajes</button>"
-                                    +"<button type='button' class='btn btn-white' id='scheduleInterview'>Agendar Cita Entrevista</button>"
-                                    +"<button type='button' class='btn btn-white' id='makeCall'>Realizar Videollamada</button>"
+                     //Empresa
+                $('#panelContent').html("<div class='list-group'>"
+                                    +"<a href='#' class='list-group-item' id='postVacancy'>Publicar</a>"
+                                    +"<a href='#' class='list-group-item' id='reviewPost'>Revisar Vacantes Publicadas</a>"
+                                    +"<a href='#' class='list-group-item' id='companyMessage'>Mensajes</a>"
+                                    +"<a href='#' class='list-group-item' id='scheduleInterview'>Agendar Cita Entrevista</a>"
+                                    +"<a href='#' class='list-group-item' id='makeCall'>Realizar Videollamada</a>"
                                     +"</div>");
                 $.getScript( "core/controller/loggedInCompanyController.js", function( data, textStatus, jqxhr ) {
                     //console.log( data ); // Data returned
@@ -46,11 +46,11 @@ $(document).ready(function() {
                 });
             } else if (msg == 2) {
                 //Persona
-                $('#panelContent').html("<div class='btn-group-vertical' role='group'>"
-                                    +"<button type='button' class='btn btn-white' id='MyApplications'>Mis Postulaciones</button>"
-                                    +"<button type='button' class='btn btn-white' id='updateResume'>Actualizar Curriculum</button>"
-                                    +"<button type='button' class='btn btn-white' id='personMessage'>Mensajes</button>"
-                                    +"<button type='button' class='btn btn-white' id='viewMyInterviews'>Ver mis citas de entrevista</button>"
+                $('#panelContent').html("<div class='list-group'>"
+                                    +"<a href='#' class='list-group-item' id='MyApplications'>Mis Postulaciones <i class='fa fa-file fa-fw'></i></a>"
+                                    +"<a href='#' class='list-group-item' id='updateResume'>Actualizar Curriculum <i class='fa fa-vcard fa-fw'></i> </a>"
+                                    +"<a href='#' class='list-group-item' id='personMessage'>Mensajes <i class='fa fa-envelope fa-fw'></i></a>"
+                                    +"<a href='#' class='list-group-item' id='viewMyInterviews'>Ver citas de entrevista <i class='fa fa-address-book fa-fw'></i></a>"
                                     +"</div>");
                 $.getScript( "core/controller/loggedInPersonController.js", function( data, textStatus, jqxhr ) {
                     //console.log( data ); // Data returned
