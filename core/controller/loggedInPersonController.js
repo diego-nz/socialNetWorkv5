@@ -63,10 +63,15 @@ $(document).on('click','#postulateToVacancy',function(){
                                         +"<a href='#' id='schoolingInformation' class='list-group-item active' role='button'>Información Académica </a>"
                                         +"<div id='displayAcademic'></div>"
                                         +"<a href='#' id='professionalInformation' class='list-group-item'>Información Profesionales</a>"
-                                          +"<a href='#' id='courses' class='list-group-item'>Cursos</a>"
-                                          +"<a href='#' id='workingExperience' class='list-group-item'>Experiencia Laboral</a>"
-                                          +"<a href='#' id='languages' class='list-group-item'>Idiomas</a>"
-                                          +"<a href='#' id='otherInformation' class='list-group-item'>Otros Datos</a>"
+                                        +"<div id='displayProfesional'></div>"
+                                        +"<a href='#' id='courses' class='list-group-item'>Cursos</a>"
+                                        +"<div id='displayCourses'></div>"
+                                        +"<a href='#' id='workingExperience' class='list-group-item'>Experiencia Laboral</a>"
+                                        +"<div id='displayWork'></div>"
+                                        +"<a href='#' id='languages' class='list-group-item'>Idiomas</a>"
+                                        +"<div id='displayLanguage'></div>"
+                                        +"<a href='#' id='otherInformation' class='list-group-item'>Otros Datos</a>"
+                                        +"<div id='displayOther'></div>"
                                 +"</div>");
    });
 
@@ -76,7 +81,7 @@ $(document).on('click','#schoolingInformation',function(){
         beforeSend:function(){
             $('#spinner').attr('class','loader');
         },
-        url: "core/controller/getResumeAcademicDataController.php",
+        url: "core/controller/getAcademicDataController.php",
         type: "POST",
         data: {flg:flag},
         success: function(msg){
@@ -87,13 +92,40 @@ $(document).on('click','#schoolingInformation',function(){
         },
         complete: function(jqXHR){
             $('#spinner').attr('class','');
+            $('#displayAcademic').append("<hr><button class='btn-xs btn-success' id='addAcademicBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
         }
     });
 });
 
-$(document).on('click','#updateAcademicBtn',function(){
-    var uno=$('#txtAcademicData').val();
-    alert(uno);
+$(document).on('click','.updateAcademic',function(){
+    var academicKey=$(this).attr('id');
+    var flag="false";
+    $.ajax({
+       beforeSend: function(){
+           $('#spinner').attr('class','loader');
+       },
+        url: "core/controller/updateAcademicDataController.php",
+        type: "POST",
+        data: {flgF:flag,academicId:academicKey},
+        success: function(msg){
+            $('#myModalTitle').text("Información escolar");
+            $('#modalBodyUpdate').html(msg);
+            var studying=$('#txtIsStudying').val();
+            if(studying=="Si" || studying=="si"){
+                $('#radIsStudyingY').attr('checked',true);
+
+            }else if(studying=="No" || studying=="no"){
+                $('#radIsStudyingN').attr('checked',true);
+            }
+        },
+        error: function(jqXHR,error,status){
+            console.error(jqXHR.responseXML+error.responseText+status.response);
+        },
+        complete: function(){
+            $('#spinner').attr('class','');
+        }
+    });
+
 });
 
 
@@ -137,7 +169,7 @@ $(document).on('click','#saveChangesBtn',function(){
            beforeSend: function(){
                $('#spinner').attr('class','loader');
            },
-            url:"core/controller/updateResumeAcademicDataController.php",
+            url:"core/controller/updateAcademicDataController.php",
             type:"POST",
             data:{flg:flag},
             success: function(msg){
@@ -152,7 +184,27 @@ $(document).on('click','#saveChangesBtn',function(){
         });
     }
 });
+//////////////////////////////
 
+$(document).on('click','#professionalInformation',function(){
+   $.ajax({
+      beforeSend: function(){
+          $('#spinner').attr('class','loader');
+      },
+       url: "getProfessionalInformationController.php",
+       type:"POST",
+       data:{},
+       success: function(){
+
+       },
+       error: function(){
+
+       },
+       complete: function(){
+           $('#spinner').attr('class','');
+       }
+   });
+});
 /*$(document).on('click','#courses' ,function(){
    var flag="true";
     $.ajax({
