@@ -25,22 +25,23 @@
             </div>
             <div class="mbr-cards-col col-xs-12 col-md-4 col-lg-6" style="padding-top: 160px; padding-bottom: 160px;">
                 <div class="container">
+                    <div id="spinner">
+
+                    </div>
                     <div class="card cart-block">
                         <div class="card-block">
                             <h4 id="middleTitle" class="card-title"></h4>
                             <div id="stateMessage">
 
                             </div>
-                            <div id="spinner">
 
-                            </div>
                             <div id="middlePanel">
 
                             </div>
                         </div>
                     </div>
 
-                <?php include_once('view/modal.html'); ?>
+                    <?php include_once( 'view/modal.html'); ?>
 
                 </div>
             </div>

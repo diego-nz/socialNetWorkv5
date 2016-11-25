@@ -27,7 +27,7 @@ class Vacancy extends Connection{
                 ." vacante.num_vacantes,vacante.zona,vacante.salario,vacante.fecha_exp,vacante.comentarios,vacante.idVacante"
                 ." FROM vacante INNER JOIN empresa on vacante.idEmpresa=empresa.idEmpresa WHERE "
                 ." vacante.nombre like (SELECT datos_prof.titulo FROM datos_prof INNER JOIN curriculum ON "  ."curriculum.idCurriculum=datos_prof.idCurriculum INNER JOIN persona ON persona.idPersona=curriculum.idPersona "
-                ." WHERE persona.idPersona = '".$row['idPersona']."')";
+                ." WHERE persona.idPersona = '".$row['idPersona']."') ";
         $executeQuery2=mysqli_query($this->getConnection(),$query2) or die ("Error en getVacancy ".mysqli_error($this->getConnection()));
         if(mysqli_num_rows($executeQuery2)){
             echo "<div id='postVacancy'><div class='table-responsive'>";

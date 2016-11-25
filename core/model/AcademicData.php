@@ -4,9 +4,15 @@ require_once ('Connection.php');
 class AcademicData extends Connection{
 
 
-    public function updateSchoolingInformation(){
-        $query="UPDATE datos_acad set ";
-        echo 1;
+    public function updateAcademicData($academicKey,$isStudying,$grade,$schoolName,$begin,$end,$lastYear){
+        $query="UPDATE datos_acad set estudia_actual='".$isStudying."', grado_act='".$grade."',nom_escuela='".$schoolName."', "
+                ." fec_ini='".$begin."',fec_fin='".$end."',grado_maxim_estudios='".$lastYear."' where id_datos_acad='".$academicKey."' ";
+        $executeQuery=mysqli_query($this->getConnection(),$query) or die("Error updating academic ".mysqli_error($this->getConnection()));
+        if($executeQuery){
+            echo 1;
+        }/*else{
+            echo 2;
+        }*/
     }
 
     public function getAcademicData(){
@@ -36,7 +42,7 @@ class AcademicData extends Connection{
                     $row2[1]
                     </br>
                         <div class='btn btn-group-xs' role='group'>
-                            <button class='btn-xs btn-danger' id='deleteAcademicBtn'>Eliminar<i class='fa fa-trash fa-fw'></i></button>
+                            <button class='btn-xs btn-danger deleteAcademic' id='$row2[0]'>Eliminar<i class='fa fa-trash fa-fw'></i></button>
                             <button class='btn-xs btn-warning updateAcademic' data-toggle='modal' data-target='#modalUpdate' id='$row2[0]'>Editar
                             <i class='fa fa-pencil-square-o fa-fw'></i></button>
                         </div>
@@ -88,6 +94,15 @@ class AcademicData extends Connection{
         }
     }
 
+    public function deleteAcademicData($idAcademic){
+        $query="DELETE FROM datos_acad WHERE id_datos_acad='".$idAcademic."' ";
+        $executeQuery=mysqli_query($this->getConnection(),$query)or die("Error deleting academic ").mysqli_error($this->getConnection());
+        if($executeQuery){
+            echo 1;
+        }/*else{
+            echo 2;
+        }*/
+    }
 
 }
 

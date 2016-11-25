@@ -1,13 +1,25 @@
 <?php
+    require_once("../model/AcademicData.php");
 
 if(isset($_POST["flg"]) and $_POST["flg"]=="true"){
-    echo 1;
+
+
+    $key=$_POST["academicKey"];
+    $isStudying=$_POST["isStudying"];
+    $grade=$_POST["grade"];
+    $schoolName=$_POST["schoolName"];
+    $begin=$_POST["begin"];
+    $end=$_POST["end"];
+    $lastYear=$_POST["lastYear"];
+
+    $objAcademic = new AcademicData();
+    $objAcademic -> updateAcademicData($key,$isStudying,$grade,$schoolName,$begin,$end,$lastYear);
+
 }else if(isset($_POST["flgF"]) and $_POST["flgF"]=="false"){
-    require_once ('../model/AcademicData.php');
 
     $idAcademic=$_POST["academicId"];
 
-    $objAcademic = new AcademicData($idAcademic);
+    $objAcademic = new AcademicData();
 
     $objAcademic -> getIdAcademicData($idAcademic);
 }

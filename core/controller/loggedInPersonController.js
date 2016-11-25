@@ -11,7 +11,7 @@ $(document).ready(function(){
         success: function (msg){
             if(msg == 2){
                 $('#middleTitle').text("Algunos empleos para ti");
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No se han encontrado vacantes!</strong> <a href='#' class='alert-link'>Pero no te precupes seguiremos buscando la mejor opcion para ti</a></div>");
+                $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No se han encontrado vacantes!</strong> <a href='#' class='alert-link'>Pero no te precupes seguiremos buscando la mejor opción para ti</a></div>");
             }else{
                 $('#middleTitle').text("Algunos empleos para ti");
                 $('#middlePanel').html(msg);
@@ -62,8 +62,8 @@ $(document).on('click','#postulateToVacancy',function(){
        $('#middlePanel').html("<div class='list-group'>"
                                         +"<a href='#' id='schoolingInformation' class='list-group-item active' role='button'>Información Académica </a>"
                                         +"<div id='displayAcademic'></div>"
-                                        +"<a href='#' id='professionalInformation' class='list-group-item'>Información Profesionales</a>"
-                                        +"<div id='displayProfesional'></div>"
+                                        +"<a href='#' id='professionalInformation' class='list-group-item' role='button'>Información Profesionales</a>"
+                                        +"<div id='displayProfessional'></div>"
                                         +"<a href='#' id='courses' class='list-group-item'>Cursos</a>"
                                         +"<div id='displayCourses'></div>"
                                         +"<a href='#' id='workingExperience' class='list-group-item'>Experiencia Laboral</a>"
@@ -108,7 +108,7 @@ $(document).on('click','.updateAcademic',function(){
         type: "POST",
         data: {flgF:flag,academicId:academicKey},
         success: function(msg){
-            $('#myModalTitle').text("Información escolar");
+            $('#myModalTitle').text("Información Académica");
             $('#modalBodyUpdate').html(msg);
             var studying=$('#txtIsStudying').val();
             if(studying=="Si" || studying=="si"){
@@ -117,6 +117,7 @@ $(document).on('click','.updateAcademic',function(){
             }else if(studying=="No" || studying=="no"){
                 $('#radIsStudyingN').attr('checked',true);
             }
+            $('#saveAcademic').show();
         },
         error: function(jqXHR,error,status){
             console.error(jqXHR.responseXML+error.responseText+status.response);
@@ -129,14 +130,16 @@ $(document).on('click','.updateAcademic',function(){
 });
 
 
-$(document).on('click','#saveChangesBtn',function(){
+$(document).on('click','#saveChangesAcademicBtn',function(){
+
     var flag="true";
+    var key=$('#txtAcadDat').val();
+    var studying=$('input:radio[name=radIsStudying]:checked').val();
     var actualGrade=$('#txtActualGrade').val();
     var school=$('#txtSchoolName').val();
     var schoolStart=$('#txtSchoolStart').val();
     var schoolFinish=$('#txtSchoolEnd').val();
     var lastGrade=$('#txtMaxGrade').val();
-    var flag2="false";
 
     $('#modalMessage').html("");
     $('#txtActualGrade').focus().css('border-color','');
@@ -171,9 +174,13 @@ $(document).on('click','#saveChangesBtn',function(){
            },
             url:"core/controller/updateAcademicDataController.php",
             type:"POST",
-            data:{flg:flag},
+            data:{flg:flag,academicKey:key,isStudying:studying,grade:actualGrade,
+                  schoolName:school,begin:schoolStart,end:schoolFinish,lastYear:lastGrade},
             success: function(msg){
-                alert(msg);
+                if(msg==1){
+                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido actualizados correctamente.</a></div>");
+                $('#closeModalUpdate').trigger('click');
+                }
             },
             error: function(jqXHR,status,error){
 
@@ -184,26 +191,77 @@ $(document).on('click','#saveChangesBtn',function(){
         });
     }
 });
-//////////////////////////////
 
+$(document).on('click','.deleteAcademic',function(){
+    var key=$(this).attr('id');
+  $.ajax({
+     beforeSend: function(){
+         $('#spinner').attr('class','loader');
+     },
+      url: "core/controller/deleteAcademicDataController.php",
+      type: "POST",
+      data:{keyId:key},
+      success: function(msg){
+          if(msg==1){
+            $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+            $('#schoolingInformation').trigger('click');
+          }
+      },
+      error:function(){
+
+      },
+      complete: function(){
+          $('#spinner').attr('class','');
+      }
+  });
+});
+//////////////////////////////
 $(document).on('click','#professionalInformation',function(){
-   $.ajax({
+   var flag="true";
+    $.ajax({
       beforeSend: function(){
           $('#spinner').attr('class','loader');
       },
-       url: "getProfessionalInformationController.php",
+       url: "core/controller/getProfessionalInformationController.php",
        type:"POST",
-       data:{},
-       success: function(){
-
+       data:{flg:flag},
+       success: function(msg){
+           $('#displayProfessional').html(msg);
        },
-       error: function(){
+       error: function(jqXHR,status,error){
 
        },
        complete: function(){
            $('#spinner').attr('class','');
+           $('#displayProfessional').append("<hr><button class='btn-xs btn-success' id='addAcademicBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
        }
    });
+});
+
+$(document).on('click','.updateProfessional',function(){
+    var key=$(this).attr('id');
+    var flag="false";
+    $.ajax({
+       beforeSend: function(){
+           $('#spinner').attr('class','loader');
+       },
+        url: "core/controller/deleteProfessionalInformationController.php",
+        type: "POST",
+        data: {flg:flag,keyId:key},
+        success: function(msg){
+            if(msg==1){
+                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+                $('#professionalInformation').trigger('click');
+            }
+        },
+        error: function(jqXHR,error,status){
+            console.error(jqXHR.responseXML+error.responseText+status.response);
+        },
+        complete: function(){
+            $('#spinner').attr('class','');
+        }
+    });
+
 });
 /*$(document).on('click','#courses' ,function(){
    var flag="true";
