@@ -89,6 +89,9 @@ $(document).on('click','#fistLog',function(){
         $('#txtNumTel').css('border-color','#cd0808');
 
     }else{
+        $('#txtMail').css('border-color','#01DF01');
+                $('#txtRepMail').css('border-color','#01DF01');
+                $('#txtNumTel').css('border-color','#01DF01');
     $.ajax({
         url:"core/controller/contactSignUpController.php",
         type:'POST',
@@ -112,10 +115,15 @@ $(document).on('click','#fistLog',function(){
                 $('#txtNumTel').css('border-color','#cd0808');
 
             }else if(data == 3){
-                $("#secondLog").children().removeAttr('disabled');
+
                 $('#txtMail').val("");
                 $('#txtRepMail').val("");
                 $('#txtNumTel').val("");
+
+                $('#txtMail').css('border-color','#01DF01');
+                $('#txtRepMail').css('border-color','#01DF01');
+                $('#txtNumTel').css('border-color','#01DF01');
+
                 $('#infoErrorContacto').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Correcto!</strong> <a href='#' class='alert-link'>Tus datos han sido enviados correctamente</a></div>");
                 $("#divPrimeraParte").children().attr("disabled","disabled");
             }
@@ -172,6 +180,12 @@ $(document).on('click','#secondLogBtn',function(){
         $('#txtNumExt').css('border-color','#cd0808');
 
     }else{
+        $('#txtState').css("border-color",'#01DF01');
+    $('#txtMunicipio').css("border-color",'#01DF01');
+    $('#txtColonia').css("border-color",'#01DF01');
+    $('#txtCalle').css("border-color",'#01DF01');
+    $('#txtNumInt').css("border-color",'#01DF01');
+    $('#txtNumExt').css("border-color",'#01DF01');
     $.ajax({
      url:"core/controller/addressSignUpController.php",
         type:"POST",
@@ -190,7 +204,15 @@ $(document).on('click','#secondLogBtn',function(){
     $('#txtCalle').val("");
     $('#txtNumInt').val("");
     $('#txtNumExt').val("");
-                     $('#infoErrorDireccion').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Correcto!</strong> <a href='#' class='alert-link'>Tus datos han sido enviados correctamente</a></div>");
+
+    $('#txtState').css("border-color",'#01DF01');
+    $('#txtMunicipio').css("border-color",'#01DF01');
+    $('#txtColonia').css("border-color",'#01DF01');
+    $('#txtCalle').css("border-color",'#01DF01');
+    $('#txtNumInt').css("border-color",'#01DF01');
+    $('#txtNumExt').css("border-color",'#01DF01');
+
+    $('#infoErrorDireccion').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Correcto!</strong> <a href='#' class='alert-link'>Tus datos han sido enviados correctamente</a></div>");
                 $("#secondLog").children().attr("disabled","disabled");
 
                 }
@@ -236,7 +258,9 @@ $(document).on('click','#btnSignUpUser',function(){
         $('#txtRepPassword').css('border-color','#cd0808');
 
     }else{
-
+$('#txtUserReg').css("border-color",'#01DF01');
+                    $('#txtPassword').css("border-color",'#01DF01');
+                    $('#txtRepPassword').css("border-color",'#01DF01');
     $.ajax({
         url:"core/controller/userSignUpController.php",
         type:'POST',
@@ -256,6 +280,10 @@ $(document).on('click','#btnSignUpUser',function(){
                      $('#txtUserReg').val("");
                     $('#txtPassword').val("");
                     $('#txtRepPassword').val("");
+
+                     $('#txtUserReg').css("border-color",'#01DF01');
+                    $('#txtPassword').css("border-color",'#01DF01');
+                    $('#txtRepPassword').css("border-color",'#01DF01');
 
                     $('#infoErrorUser').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Correcto!</strong> <a href='#' class='alert-link'>Tus datos han sido enviados correctamente</a></div>");
 
@@ -304,6 +332,10 @@ $(document).on('click','#lastLogBtn',function(){
         $('#txtRFC').css('border-color','#cd0808');
 
           }else if(cmbType == 1){
+              $('#nombreEmpresa').css('border-color','#01DF01');
+                    $('#giroEmpresa').css('border-color','#01DF01');
+                    $('#txtRFC').css('border-color','#01DF01');
+                    $('#cmbTipoPersona').css('border-color','#01DF01');
               if(rfc.length === 13){
                   $.ajax({
                 url:'core/controller/companySignUpController.php',
@@ -325,6 +357,12 @@ $(document).on('click','#lastLogBtn',function(){
                     $('#giroEmpresa').val("");
                     $('#txtRFC').val("");
                     $('#cmbTipoPersona').val(0);
+
+                    $('#nombreEmpresa').css('border-color','#01DF01');
+                    $('#giroEmpresa').css('border-color','#01DF01');
+                    $('#txtRFC').css('border-color','#01DF01');
+                    $('#cmbTipoPersona').css('border-color','#01DF01');
+
                      $('#infoErrorUltimoReg').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Has terminado tu registro con exito!</strong> <a href='#' class='alert-link'>Ahora puedes iniciar iniciar sesion</a></div>");
                     $("#lastLog").children().attr("disabled","disabled");
                 }if(data == 4){
@@ -344,7 +382,10 @@ $(document).on('click','#lastLogBtn',function(){
               }
 
           }else if(cmbType == 2){
-              //persona moral
+              $('#nombreEmpresa').css('border-color','#01DF01');
+                    $('#giroEmpresa').css('border-color','#01DF01');
+                    $('#txtRFC').css('border-color','#01DF01');
+                    $('#cmbTipoPersona').css('border-color','#01DF01');
               if(rfc.length === 12){
                    $.ajax({
                 url:'core/controller/companySignUpController.php',
@@ -366,6 +407,12 @@ $(document).on('click','#lastLogBtn',function(){
                     $('#giroEmpresa').val("");
                     $('#txtRFC').val("");
                     $('#cmbTipoPersona').val(0);
+
+                    $('#nombreEmpresa').css('border-color','#01DF01');
+                    $('#giroEmpresa').css('border-color','#01DF01');
+                    $('#txtRFC').css('border-color','#01DF01');
+                    $('#cmbTipoPersona').css('border-color','#01DF01');
+
                      $('#infoErrorUltimoReg').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Has terminado tu registro con exito!</strong> <a href='#' class='alert-link'>Ahora puedes iniciar iniciar sesion</a></div>");
                     $("#lastLog").children().attr("disabled","disabled");
                 }if(data == 4){
@@ -437,7 +484,12 @@ $(document).on('click','#lastLogBtn',function(){
             $('#cmbSexo').css('border-color','#cd0808');
 
         }else {
-
+            $('#txtNombrePer').css("border-color",'#01DF01');
+                        $('#txtApePat').css("border-color",'#01DF01');
+                        $('#txtApeMat').css("border-color",'#01DF01');
+                        $('#txtCurp').css("border-color",'#01DF01');
+                        $('#txtFechaNac').css("border-color",'#01DF01');
+                        $('#cmbSexo').css("border-color",'#01DF01');
             if(curp.length === 18){
 
             if(curp.match(/^([a-z]{4})([0-9]{6})([a-z]{6})([0-9]{2})$/i)){
@@ -466,6 +518,13 @@ $(document).on('click','#lastLogBtn',function(){
                         $('#txtCurp').val("");
                         $('#txtFechaNac').val("");
                         $('#cmbSexo').val(0);
+
+                        $('#txtNombrePer').css("border-color",'#01DF01');
+                        $('#txtApePat').css("border-color",'#01DF01');
+                        $('#txtApeMat').css("border-color",'#01DF01');
+                        $('#txtCurp').css("border-color",'#01DF01');
+                        $('#txtFechaNac').css("border-color",'#01DF01');
+                        $('#cmbSexo').css("border-color",'#01DF01');
 
                         $('#infoErrorUltimoReg').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>x</button><strong>¡Has terminado tu registro con exito!</strong> <a href='#' class='alert-link'>Ahora puedes iniciar iniciar sesion</a></div>");
                     $("#lastLog").children().attr("disabled","disabled");
