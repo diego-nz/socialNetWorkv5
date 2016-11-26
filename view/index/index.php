@@ -18,10 +18,15 @@
                 <div class="modal-body">
                     <div role="form" onkeypress="enterLogin(event)">
                         <div class="form-group">
-                            <span class="glyphicons glyphicons-user"></span>
                             <span id="spinner"></span>
-                            <input type="text" class="form-control" name="txtUserLogIn" id="txtUserLogin" placeholder="Usuario">
-                            <input type="password" class="form-control" name="txtPasswordLogIn" id="txtPasswordLogin" placeholder="Contraseña">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user-circle fa-fw"></i></span>
+                                <input type="text" class="form-control" name="txtUserLogIn" id="txtUserLogin" placeholder="Usuario">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <input type="password" class="form-control" name="txtPasswordLogIn" id="txtPasswordLogin" placeholder="Contraseña">
+                            </div>
                         </div>
                     </div>
 
