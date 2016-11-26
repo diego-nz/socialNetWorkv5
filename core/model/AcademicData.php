@@ -1,22 +1,11 @@
 <?php
 
 require_once ('Connection.php');
+
 class AcademicData extends Connection{
 
-
-    public function updateAcademicData($academicKey,$isStudying,$grade,$schoolName,$begin,$end,$lastYear){
-        $query="UPDATE datos_acad set estudia_actual='".$isStudying."', grado_act='".$grade."',nom_escuela='".$schoolName."', "
-                ." fec_ini='".$begin."',fec_fin='".$end."',grado_maxim_estudios='".$lastYear."' where id_datos_acad='".$academicKey."' ";
-        $executeQuery=mysqli_query($this->getConnection(),$query) or die("Error updating academic ".mysqli_error($this->getConnection()));
-        if($executeQuery){
-            echo 1;
-        }/*else{
-            echo 2;
-        }*/
-    }
-
     public function getAcademicData(){
-          $query="SELECT datos_acad.idCurriculum FROM datos_acad "
+        $query="SELECT datos_acad.idCurriculum FROM datos_acad "
         ." INNER JOIN curriculum ON datos_acad.idCurriculum=curriculum.idCurriculum "
         ." INNER JOIN persona ON curriculum.idPersona=persona.idPersona"
         ." INNER JOIN usuario ON persona.idUsuario=usuario.idUsuario WHERE usuario.idUsuario='".$_SESSION['session_id']."' ";
@@ -92,6 +81,18 @@ class AcademicData extends Connection{
                         <input type='text' class='form-control' id='txtMaxGrade' value='$row[7]'>
                     </div>";
         }
+    }
+
+
+    public function updateAcademicData($academicKey,$isStudying,$grade,$schoolName,$begin,$end,$lastYear){
+        $query="UPDATE datos_acad set estudia_actual='".$isStudying."', grado_act='".$grade."',nom_escuela='".$schoolName."', "
+                ." fec_ini='".$begin."',fec_fin='".$end."',grado_maxim_estudios='".$lastYear."' where id_datos_acad='".$academicKey."' ";
+        $executeQuery=mysqli_query($this->getConnection(),$query) or die("Error updating academic ".mysqli_error($this->getConnection()));
+        if($executeQuery){
+            echo 1;
+        }/*else{
+            echo 2;
+        }*/
     }
 
     public function deleteAcademicData($idAcademic){
