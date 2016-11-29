@@ -1,6 +1,8 @@
 $(document).on('click', '#postVacancy', function() {
+    $('#middlePanel').empty();
+
     $('#middlePanel').fadeIn();
-    $('#middleTitle').text("Nueva Vacante");
+    //$('#middleTitle').text("Nueva Vacante");
     $('#middlePanel').html("<div id='datos' role='form'>"
                                     +"<div class='form-group row'>"
                                         +"<label class='col-xs-2 col-form-label' for='txtName'>Nombre</label>"
@@ -106,9 +108,9 @@ $(document).on('click', '#savePost', function() {
             },
             success: function(msg) {
 
-                $('#middlePanel').fadeOut();
+                $('#middlePanel').empty();
 
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'>"
+                $('#middlePanel').html("<div class='alert alert-dismissible alert-success'>"
                                        +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>Sus datos han sido guardados</strong>"
                                        +"<a href='#' class='alert-link'>Correctamente</a></div>");
                 $('#middlePanel').html("");
@@ -119,11 +121,42 @@ $(document).on('click', '#savePost', function() {
             }
         });
     }else{
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'>"
-                                       +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No debe dejar ningun campo vacio!</strong>"
-                                       +"<a href='#' class='alert-link'> Por favor, ingrese todos los datos.</a></div>");    }
+
+        alertify.alert("No debe dejar ningun campo vacio");
+
+    }
 });
 
 $(document).on('click', '#reviewPost', function() {
-    alert("ok reviews");
+
+    $('#middlePanel').empty();
+    $.ajax({
+        url:'core/controller/checkVacancyCompanyController.php',
+        dataType:'html',
+        success:function(data){
+            if(data == 1){
+                 $('#middlePanel').html("<div class='alert alert-dismissible alert-danger'>"
+                                       +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡UPS! Parece que aun no tienes vacantes disponibles</strong>"
+                                       +"<a href='#' class='alert-link'> No esperes mas, por favor agrega una nueva vacante </a></div>");
+            }else{
+
+                $('#middlePanel').html(data);
+            }
+        }
+
+    });
+
+
+
 });
+
+//tableDetailVacancy Tabla para darle evento
+
+$(document).on('click','#tableDetailVacancy tbody tr',function(){
+    var nTds = $('td', this);
+    var idVacancy;
+    idVacancy = $(nTds[0]).text();
+
+    alert(idVacancy);
+});
+
