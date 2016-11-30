@@ -8,6 +8,7 @@ window.datosVideo = {
     'url': null
 }
 $(document).on('click', '#postVacancy', function() {
+    $('#stateMessage').empty();
     $('#middlePanel').empty();
 
     $('#middlePanel').fadeIn();
@@ -162,7 +163,7 @@ $(document).on('click', '#savePost', function() {
                 expira: expirationDate
             },
             success: function(msg) {
-
+$('#stateMessage').empty();
                 $('#middlePanel').empty();
 
                 alertify.alert("Su vacante ha sido guardados y publicada correctamente");
@@ -181,7 +182,7 @@ $(document).on('click', '#savePost', function() {
 });
 
 $(document).on('click', '#reviewPost', function() {
-
+$('#stateMessage').empty();
     $('#middlePanel').empty();
     $.ajax({
         url:'core/controller/checkVacancyCompanyController.php',
@@ -230,6 +231,7 @@ $(document).on('click','#tableDetailVacancy tbody tr',function(){
 });
 
 $(document).on('click','#makeCall',function(){
+    $('#stateMessage').empty();
     $('#middlePanel').empty();
 
     $('#stateMessage').html('<table text-align="center"></td><td><input type="button" id="btnStartVideo" class="btn btn-success" value="Iniciar"/></td><td><input type="button" id="btnFinishVideo" class="btn btn-error" value="Detener"/></td></tr></table>');

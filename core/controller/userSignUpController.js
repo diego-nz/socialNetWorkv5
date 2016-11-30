@@ -331,7 +331,8 @@ $(document).on('click','#lastLogBtn',function(){
             $('#txtRFC').focus();
         $('#txtRFC').css('border-color','#cd0808');
 
-          }else if(cmbType == 1){
+          }if($('#checkTermEmp').prop('checked')){
+  if(cmbType == 1){
               $('#nombreEmpresa').css('border-color','#01DF01');
                     $('#giroEmpresa').css('border-color','#01DF01');
                     $('#txtRFC').css('border-color','#01DF01');
@@ -429,8 +430,11 @@ $(document).on('click','#lastLogBtn',function(){
             $('#txtRFC').focus();
             $('#txtRFC').css('border-color','#cd0808');
               }
-          }
 
+          }
+          }else{
+              alertify.alert("Debe aceptar los terminos y condiciones");
+          }
     }else if(type == 2){
         var nombre = $('#txtNombrePer').val();
         var apePat = $('#txtApePat').val();
@@ -483,7 +487,7 @@ $(document).on('click','#lastLogBtn',function(){
               $('#cmbSexo').focus();
             $('#cmbSexo').css('border-color','#cd0808');
 
-        }else {
+        }else if($('#checkTermPer').prop('checked')){
             $('#txtNombrePer').css("border-color",'#01DF01');
                         $('#txtApePat').css("border-color",'#01DF01');
                         $('#txtApeMat').css("border-color",'#01DF01');
@@ -547,12 +551,8 @@ $(document).on('click','#lastLogBtn',function(){
               $('#txtCurp').focus();
             $('#txtCurp').css('border-color','#cd0808');
         }
-
-
-
-
-
-
+        }else {
+            alertify.alert("Debe aceptar terminos y condiciones");
 
         }
 
