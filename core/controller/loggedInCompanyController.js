@@ -228,8 +228,6 @@ $(document).on('click','#tableDetailVacancy tbody tr',function(){
     });
     }
 });
-<<<<<<< HEAD
-=======
 
 $(document).on('click','#makeCall',function(){
     $('#middlePanel').empty();
