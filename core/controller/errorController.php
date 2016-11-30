@@ -1,5 +1,6 @@
 <?php
 
-echo 'Error';
+echo '<h1>No está permitido</h1>';
+
 
 ?>

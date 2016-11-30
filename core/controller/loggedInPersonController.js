@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     var flag="true";
     $.ajax({
       beforeSend: function(){
@@ -909,4 +908,57 @@ $(document).on('click','#newProf',function(){
 
     }
 
+});
+
+$(document).on('click','#showVacancies',function(){
+    var flag="true";
+    $.ajax({
+      beforeSend: function(){
+          $('#spinner').attr('class','loader');
+      },
+       url: "core/controller/loadVacanciesController.php",
+       type:"POST",
+       data:{flg:flag},
+        success: function (msg){
+            if(msg == 2){
+                $('#middleTitle').text("Algunos empleos para ti");
+                $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No se han encontrado vacantes!</strong> <a href='#' class='alert-link'>Pero no te precupes seguiremos buscando la mejor opción para ti</a></div>");
+            }else{
+                $('#middleTitle').text("Algunos empleos para ti");
+                $('#middlePanel').html(msg);
+            }
+        },
+        error: function (jqXHR,status,error) {
+            //alert(jqXHR+status+error);
+        },complete: function (jqXHR,status){
+            $('#postulateToVacancy').on({
+                mouseenter: function(){
+                    $('#postulateMsg').fadeIn(500).html("Postularme");
+                },
+                mouseleave: function(){
+                    $('#postulateMsg').fadeOut(100).html("");
+                }
+            });
+        }
+   });
+});
+
+$(document).on('click','#MyApplications',function(){
+   $.ajax({
+      beforeSend: function(){
+
+      },
+       url:"core/controller/getApplicationsController.php",
+       type:"POST",
+       data:{},
+       success: function(){
+
+       },
+       error: function(){
+
+       },
+       complete: function(){
+
+       }
+   });
 });

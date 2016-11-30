@@ -28,7 +28,7 @@
                                 <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
                                 <input type="password" class="form-control" name="txtPasswordLogIn" id="txtPasswordLogin" placeholder="Contraseña">
                             </div>
-                            <p class="help-block text-info" id="passwordInfo"><small> </small></p>
+                            <p class="help-block text-info" id="passwordInfo" style="display:none;"><small>Te recomendamos una contraseña de mínimo 8 caracteres.</small></p>
                         </div>
                     </div>
 

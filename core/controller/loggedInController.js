@@ -48,6 +48,7 @@ $(document).ready(function() {
             } else if (msg == 2) {
                 //Persona
                 $('#panelContent').html("<div class='list-group'>"
+                                    +"<a href='#' class='list-group-item' id='showVacancies'>Empleos de acuerdo a mi perfil <i class='fa fa-briefcase fa-fw'></i></a>"
                                     +"<a href='#' class='list-group-item' id='MyApplications'>Mis Postulaciones <i class='fa fa-file fa-fw'></i></a>"
                                     +"<a href='#' class='list-group-item' id='updateResume'>Actualizar Curriculum <i class='fa fa-vcard fa-fw'></i> </a>"
                                     +"<a href='#' class='list-group-item' id='personMessage'>Mensajes <i class='fa fa-envelope fa-fw'></i></a>"
