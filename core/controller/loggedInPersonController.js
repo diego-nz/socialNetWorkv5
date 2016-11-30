@@ -46,7 +46,7 @@ $(document).on('click','#postulateToVacancy',function(){
         type:"POST",
         data: {flg:flag,vId:vacancyId},
         success: function(msg){
-            $('#stateMessage').html("<div class='alert alert-dismissible alert-success'>"
+            alertify.alert("<div class='alert alert-dismissible alert-success'>"
                                        +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>Se ha postulado</strong>"
                                        +"<a href='#' class='alert-link'>correctamente a la vacante.</a></div>");
         },
@@ -72,6 +72,36 @@ $(document).on('click','#postulateToVacancy',function(){
                                         +"<div id='displayLanguage' class='displayDiv'></div>"
                                 +"</div>");
    });
+//Fechas Info. Escolar
+$(document).on('focus','#txtSchoolStart',function(){
+     $('#txtSchoolStart').datepicker({
+        dateFormat: "yy/mm/dd",
+        // minDate:0,
+         //changeYear:"false",
+        //yearRange:"2016: ",
+        changeMonth: "true",
+        dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+        dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+        firstDay: 1,
+        //gotoCurrent: true,
+        monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+     });
+});
+//Fechas Info. Escolar
+$(document).on('focus','#txtSchoolEnd',function(){
+     $('#txtSchoolEnd').datepicker({
+        dateFormat: "yy/mm/dd",
+        // minDate:0,
+         //changeYear:"false",
+        //yearRange:"2016: ",
+        changeMonth: "true",
+        dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+        dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+        firstDay: 1,
+        //gotoCurrent: true,
+        monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+     });
+});
 
 $(document).on('click','#schoolingInformation',function(){
     var flag="true";
@@ -88,7 +118,7 @@ $(document).on('click','#schoolingInformation',function(){
             $('.displayDiv').hide();
             $('#displayAcademic').show();
             $('#displayAcademic').html(msg);
-            $('#displayAcademic').append("<hr><button class='btn-xs btn-success' id='addAcademicBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
+            $('#displayAcademic').append("<hr><button class='btn-xs btn-success' id='addAcademicBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
         },
         error: function(jqXHR,error,status){
 
@@ -181,7 +211,7 @@ $(document).on('click','#saveChangesAcademicBtn',function(){
                   schoolName:school,begin:schoolStart,end:schoolFinish,lastYear:lastGrade},
             success: function(msg){
                 if(msg==1){
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido actualizados correctamente.</a></div>");
+                alertify.alert("¡Operación exitosa! Sus datos han sido actualizados correctamente.");
                 $('#closeModalUpdate').trigger('click');
                 }
             },
@@ -206,7 +236,7 @@ $(document).on('click','.deleteAcademic',function(){
       data:{keyId:key},
       success: function(msg){
           if(msg==1){
-            $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+            alertify.alert("¡Operación exitosa! Sus datos han sido eliminados  correctamente.");
             $('#schoolingInformation').trigger('click');
           }
       },
@@ -232,7 +262,7 @@ $(document).on('click','#professionalInformation',function(){
            $('.displayDiv').hide();
            $('#displayProfessional').show();
            $('#displayProfessional').html(msg);
-           $('#displayProfessional').append("<hr><button class='btn-xs btn-success' id='addProfInfoBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
+           $('#displayProfessional').append("<hr><button class='btn-xs btn-success' id='addProfInfoBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
        },
        error: function(jqXHR,status,error){
 
@@ -257,7 +287,7 @@ $(document).on('click','.deleteProfessional',function(){
         data: {flg:flag,keyId:key},
         success: function(msg){
             if(msg==1){
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+                alertify.alert("¡Operación exitosa! Sus datos han sido eliminados  correctamente.");
                 $('#professionalInformation').trigger('click');
             }
         },
@@ -284,7 +314,7 @@ $(document).on('click','#courses' ,function(){
             $('.displayDiv').hide();
             $('#displayCourses').show();
             $('#displayCourses').html(msg);
-            $('#displayCourses').append("<hr><button class='btn-xs btn-success' id='addCourseBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
+            $('#displayCourses').append("<hr><button class='btn-xs btn-success' id='addCourseBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
        },
        error: function(jqXHR,status,error){
            console.error(jqXHR.responseXML+status+error);
@@ -318,6 +348,37 @@ $(document).on('click','.updateCourse',function(){
             $('#spinner').attr('class','');
         }
     });
+});
+
+//Fechas Info. Escolar
+$(document).on('focus','#txtCourseStart',function(){
+     $('#txtCourseStart').datepicker({
+        dateFormat: "yy/mm/dd",
+        // minDate:0,
+         //changeYear:"false",
+        //yearRange:"2016: ",
+        changeMonth: "true",
+        dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+        dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+        firstDay: 1,
+        //gotoCurrent: true,
+        monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+     });
+});
+//Fechas Info. Escolar
+$(document).on('focus','#txtCourseEnd',function(){
+     $('#txtCourseEnd').datepicker({
+        dateFormat: "yy/mm/dd",
+        // minDate:0,
+         //changeYear:"false",
+        //yearRange:"2016: ",
+        changeMonth: "true",
+        dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+        dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+        firstDay: 1,
+        //gotoCurrent: true,
+        monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+     });
 });
 
 $(document).on('click','#saveChangesCourseBtn',function(){
@@ -365,7 +426,7 @@ $(document).on('click','#saveChangesCourseBtn',function(){
             data: {flg:flag,key:courseKey,course:courseName,courseArea:area,start:courseStart,end:courseEnd,courseCertified:certified},
             success: function(msg){
                 if(msg==1){
-                    $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido actualizados correctamente.</a></div>");
+                    alertify.alert("¡Operación exitosa! Sus datos han sido actualizados correctamente.");
                     $('#closeModalUpdate').trigger('click');
                 }
             },
@@ -392,7 +453,7 @@ $(document).on('click','.deleteCourse',function(){
         data: {flg:flag,keyId:key},
         success: function(msg){
             if(msg==1){
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+                alertify.alert("¡Operación exitosa! Sus datos han sido eliminados  correctamente.");
                 $('#courses').trigger('click');
             }
         },
@@ -419,7 +480,7 @@ $(document).on('click','#workingExperience' ,function(){
             $('.displayDiv').hide();
             $('#displayWork').show();
             $('#displayWork').html(msg);
-            $('#displayWork').append("<hr><button class='btn-xs btn-success' id='addWorkBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
+            $('#displayWork').append("<hr><button class='btn-xs btn-success' id='addWorkBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
 
        },
        error: function(jqXHR,status,error){
@@ -498,7 +559,7 @@ $(document).on('click','#saveChangesWorkingBtn',function(){
             data: {flg:flag,key:workKey,isWorkingNow:radWork,lastWork:work,desc:description,timeWorking:time},
             success: function(msg){
                 if(msg==1){
-                    $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido actualizados correctamente.</a></div>");
+                    alertify.alert("¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido actualizados correctamente.");
                     $('#closeModalUpdate').trigger('click');
                 }
             },
@@ -525,7 +586,7 @@ $(document).on('click','.deleteWork',function(){
         data: {flg:flag,keyId:key},
         success: function(msg){
             if(msg==1){
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+               alertify.alert("¡Operación exitosa!Sus datos han sido eliminados  correctamente.");
                 $('#workingExperience').trigger('click');
             }
         },
@@ -552,7 +613,7 @@ $(document).on('click','#languages',function(){
             $('.displayDiv').hide();
             $('#displayLanguage').show();
             $('#displayLanguage').html(msg);
-            $('#displayLanguage').append("<hr><button class='btn-xs btn-success' id='addLanguageBtn'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
+            $('#displayLanguage').append("<hr><button class='btn-xs btn-success' id='addLanguageBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
        },
        error: function(jqXHR,status,error){
            console.error(jqXHR.responseXML+status+error);
@@ -623,7 +684,7 @@ $(document).on('click','#saveChangesLanguageBtn',function(){
             data: {flg:flag,key:languageKey,language:languageName,level:languageLevel,certified:languageCertified},
             success: function(msg){
                 if(msg==1){
-                    $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido actualizados correctamente.</a></div>");
+                    alertify.alert("¡Operación exitosa! Sus datos han sido actualizados correctamente.");
                     $('#closeModalUpdate').trigger('click');
                 }
             },
@@ -650,7 +711,7 @@ $(document).on('click','.deleteLanguage',function(){
         data: {flg:flag,keyId:key},
         success: function(msg){
             if(msg==1){
-                $('#stateMessage').html("<div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Operación exitosa! </strong> <a href='#' class='alert-link'>Sus datos han sido eliminados  correctamente.</a></div>");
+                alertify.alert("¡Operación exitosa! Sus datos han sido eliminados  correctamente.");
                 $('#languages').trigger('click');
             }
         },
@@ -661,5 +722,193 @@ $(document).on('click','.deleteLanguage',function(){
             $('#spinner').attr('class','');
         }
     });
+
+});
+
+$(document).on('click','#addAcademicBtn',function(){
+    var flag="true" ;
+    var form="<div class='form-group'>"
+                        +"<label for='radIsStudying' class='control-label'>¿Estudia actualmente?</label>"
+                        +"<label for='radIsStudying' class='radio-inline'>"
+                            +"<input type='radio' class='form-control' id='radIsStudyingY' value='Si' name='radIsStudying'/>Si"
+                        +"</label>"
+                        +"<label for='radIsStudying' class='radio-inline'>"
+                            +"<input type='radio' class='form-control' id='radIsStudyingN' value='No' name='radIsStudying' checked/>No"
+                        +"</label>"
+                    +"</div>"
+
+                    +"<div class='form-group'>"
+                        +"<label for='txtActualGrade' class='control-label'>Grado actual que cursa: </label>"
+                        +"<input type='text' class='form-control' id='txtActualGrade' placeholder='Si no estudia especifique'/>"
+                    +"</div>"
+                    +"<div class='form-group'>"
+                        +"<label for='txtSchoolName' class='control-label'>Escuela: </label>"
+                        +"<input type='text' class='form-control' id='txtSchoolName' placeholder='Nombre de la escuela'/>"
+                    +"</div>"
+                    +"<div class='form-group'>"
+                        +"<label for='txtSchoolStart' class='control-label'>Inicio de estudios: </label>"
+                        +"<input type='text' class='form-control' id='txtSchoolStart' placeholder=''/>"
+                    +"</div>"
+                    +"<div class='form-group'>"
+                        +"<label for='txtSchoolEnd' class='control-label'>Término de estudios: </label>"
+                        +"<input type='text' class='form-control' id='txtSchoolEnd' placeholder=''/>"
+                    +"</div>"
+                    +"<div class='form-group'>"
+                        +"<label for='txtMaxGrade' class='control-label'>Grado máximo de estudios: </label>"
+                        +"<input type='text' class='form-control' id='txtMaxGrade' placeholder='Maestria/Licenciatura/Bachillerato'/>"
+                    +"</div>";
+
+    $('#myModalTitle').text("Información académica");
+    $('#modalBodyUpdate').html(form);
+    $('#footerUpdate').html("<button type='submit' class='btn btn-success' id='saveNewAcademic'>Agregar</button>");
+
+});
+
+$(document).on('click','#saveNewAcademic',function(){
+    var flag="true" ;
+    var studying=$('input:radio[name=radIsStudying]:checked').val();
+    var actualGrade=$('#txtActualGrade').val();
+    var school=$('#txtSchoolName').val();
+    var schoolStart=$('#txtSchoolStart').val();
+    var schoolFinish=$('#txtSchoolEnd').val();
+    var lastGrade=$('#txtMaxGrade').val();
+    var htmlErrorMessage="<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Hubo un error! Falta información.</strong> <a href='#' class='alert-link'>Completa este campo por favor.</a></div>";
+
+    $('#modalMessage').html("");
+    $('#txtActualGrade').focus().css('border-color','');
+    $('#txtSchoolName').css('border-color','');
+    $('#txtSchoolStart').css('border-color','');
+    $('#txtSchoolEnd').css('border-color','');
+    $('#txtMaxGrade').css('border-color','');
+
+    if($('#txtActualGrade').val().trim()==''){
+        $('#txtActualGrade').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }
+    else if($('#txtSchoolName').val().trim()==''){
+        $('#txtSchoolName').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }
+    else if($('#txtSchoolStart').val().trim()==''){
+        $('#txtSchoolStart').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }
+    else if($('#txtSchoolEnd').val().trim()==''){
+        $('#txtSchoolEnd').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }
+    else if($('#txtMaxGrade').val().trim()==''){
+        $('#txtMaxGrade').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }else{
+
+            $.ajax({
+               beforeSend:function(){
+                   $('#spinner').attr('class','loader');
+               },
+                url: "core/controller/addAcademicDataController.php",
+                type: "POST",
+                data:{flg:flag,isStudying:studying,grade:actualGrade,
+                  schoolName:school,begin:schoolStart,end:schoolFinish,lastYear:lastGrade},
+                success:function(msg){
+                    if(msg==1){
+                        $('#closeModalUpdate').trigger('click');
+                        alertify.alert("¡Operación exitosa! Sus datos han sido agregados correctamente.");
+                        $('#schoolingInformation').trigger('click');
+                    }
+                },
+                error:function(){
+
+                },
+                complete: function(){
+                      $('#spinner').attr('class','');
+                }
+            });
+    }
+});
+
+$(document).on('click','#addProfInfoBtn',function(){
+    var form="<div class='form-group'>"
+                    +"<div class='form-group'>"
+                        +"<label for='cmbDegree' class='control-label'>Titulado en: </label>"
+                        +"<select class='form-control' id='cmbDegree'>"
+                                +"<option value='0'>Selecciona alguna una opción carrera en:</option>"
+                            	+"<option value='Aeronáutica'>Aeronáutica</option>"
+                                +"<option value='Arquitectura'>Arquitectura</option>"
+                                +"<option value='Biotecnología'>Biotecnología</option>"
+                                +"<option value='Ciencias de la Tierra'>Ciencias de la Tierra</option>"
+                                +"<option value='Ciencias navales'>Ciencias navales</option>"
+                                +"<option value='Computación y sistemas'>Computación y sistemas</option>"
+                                +"<option value='Diseño'>Diseño</option>"
+                                +"<option value='Ingeniería ambiental'>Ingeniería ambiental</option>"
+                                +"<option value='Ingeniería bioquímica'>Ingeniería bioquímica</option>"
+                                +"<option value='Ingeniería civil'>Ingeniería civil</option>"
+                                +"<option value='Ingeniería de los transportes'>Ingeniería de los transportes</option>"
+                                +"<option value='Ingeniería eléctrica y electrónica'>Ingeniería eléctrica y electrónica</option>"
+                                +"<option value='Ingeniería en control, instrumentación y procesos'>Ingeniería en control, instrumentación y procesos</option>"
+                                +"<option value='Ingeniería en telecomunicaciones'>Ingeniería en telecomunicaciones</option>"
+                                +"<option value='Ingeniería en telemática'>Ingeniería en telemática</option>"
+                                +"<option value='Ingeniería energética'>Ingeniería energética</option>"
+                                +"<option value='Ingeniería extractiva y metalúrgica'>Ingeniería extractiva y metalúrgica</option>"
+                                +"<option value='Ingeniería física'>Ingeniería física</option>"
+                                +"<option value='Ingeniería hidráulica'>Ingeniería hidráulica</option>"
+                                +"<option value='Ingeniería industrial'>Ingeniería industrial</option>"
+                                +"<option value='Ingeniería mecánica y eléctrica'>Ingeniería mecánica y eléctrica</option>"
+                                +"<option value='Ingeniería oceánica'>Ingeniería oceánica</option>"
+                                +"<option value='Ingeniería química'>Ingeniería química</option>"
+                                +"<option value='Ingeniería textil'>Ingeniería textil</option>"
+                                +"<option value='Ingeniería topográfica'>Ingeniería topográfica</option>"
+                                +"<option value='Planeación'>Planeación</option>"
+                                +"<option value='Química industrial'>Química industrial</option>"
+                                +"<option value='Urbanismo'>Urbanismo</option>"
+                        +"</select>"
+                    +"</div>"
+                    +"<div class='form-group'>"
+                        +"<label for='txtProfCed' class='control-label'>Cédula profesional: </label>"
+                        +"<input type='text' class='form-control' id='txtProfCed' placeholder='Sí,número/no,expecifique' maxlength='18'/>"
+                    +"</div>";
+    $('#myModalTitle').text("Información profesional");
+    $('#modalBodyUpdate').html(form);
+    $('#footerUpdate').html("<button type='submit' class='btn btn-success' id='newProf'>Agregar</button>");
+   });
+
+$(document).on('click','#newProf',function(){
+    var flag="true";
+    var degree=$('#cmbDegree').val();
+    var cedule=$('#txtProfCed').val();
+    var htmlErrorMessage="<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Hubo un error! Falta información.</strong> <a href='#' class='alert-link'>Completa este campo por favor.</a></div>";
+
+    if(degree==0){
+        $('#cmbDegree').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }else if($('#txtProfCed').val().trim()===''){
+        $('#txtProfCed').focus().css('border-color','#cd0808');
+        $('#modalMessage').html(htmlErrorMessage);
+    }else{
+
+       $.ajax({
+          beforeSend:function(){
+              $('#spinner').attr('class','loader');
+          },
+           url:"core/controller/addProfessionalInformationController.php",
+           type:"POST",
+           data: {flg:flag,newDegree:degree,newCedule:cedule},
+           success: function(msg){
+                if(msg==1){
+                    $('#closeModalUpdate').trigger('click');
+                    alertify.alert("¡Operación exitosa! Sus datos han sido agregados correctamente.")
+                    $('#professionalInformation').trigger('click');
+                }
+            },
+           error: function(){
+
+           },
+           complete: function(){
+               $('#spinner').attr('class','');
+           }
+
+       });
+
+    }
 
 });

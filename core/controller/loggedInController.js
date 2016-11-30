@@ -33,11 +33,11 @@ $(document).ready(function() {
             if (msg == 1) {
                      //Empresa
                 $('#panelContent').html("<div class='list-group'>"
-                                    +"<a href='#' class='list-group-item' id='postVacancy'>Publicar</a>"
-                                    +"<a href='#' class='list-group-item' id='reviewPost'>Revisar Vacantes Publicadas</a>"
-                                    +"<a href='#' class='list-group-item' id='companyMessage'>Mensajes</a>"
-                                    +"<a href='#' class='list-group-item' id='scheduleInterview'>Agendar Cita Entrevista</a>"
-                                    +"<a href='#' class='list-group-item' id='makeCall'>Realizar Videollamada</a>"
+                                    +"<a href='#' class='list-group-item' id='postVacancy'>Publicar <i class='fa fa-sticky-note fa-fw'></i></a>"
+                                    +"<a href='#' class='list-group-item' id='reviewPost'>Revisar Vacantes Publicadas <i class='fa fa-search fa-fw'></i></a>"
+                                    +"<a href='#' class='list-group-item' id='companyMessage'>Mensajes <i class='fa fa-envelope fa-fw'></i></a>"
+                                    +"<a href='#' class='list-group-item' id='scheduleInterview'>Agendar Cita Entrevista <i class='fa fa-calendar-check-o fa-fw'></i></a>"
+                                    +"<a href='#' class='list-group-item' id='makeCall'>Realizar Videollamada <i class='fa fa-video-camera fa-fw'></i></a>"
                                     +"</div>");
                 $.getScript( "core/controller/loggedInCompanyController.js", function( data, textStatus, jqxhr ) {
                     //console.log( data ); // Data returned
