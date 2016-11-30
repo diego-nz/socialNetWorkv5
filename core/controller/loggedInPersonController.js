@@ -46,9 +46,7 @@ $(document).on('click','#postulateToVacancy',function(){
         type:"POST",
         data: {flg:flag,vId:vacancyId},
         success: function(msg){
-            alertify.alert("<div class='alert alert-dismissible alert-success'>"
-                                       +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>Se ha postulado</strong>"
-                                       +"<a href='#' class='alert-link'>correctamente a la vacante.</a></div>");
+            alertify.alert("Se ha postulado correctamente a la vacante");
         },
         error: function (jqXHR,status,error){
             alert(jqXHR+status+error);

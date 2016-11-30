@@ -156,9 +156,7 @@ $(document).on('click', '#savePost', function() {
 
                 $('#middlePanel').empty();
 
-                $('#middlePanel').html("<div class='alert alert-dismissible alert-success'>"
-                                       +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>Sus datos han sido guardados</strong>"
-                                       +"<a href='#' class='alert-link'>Correctamente</a></div>");
+                alertify.alert("Su vacante ha sido guardados y publicada correctamente");
                 $('#middlePanel').html("");
                 $('#middleTitle').text("");
             },
