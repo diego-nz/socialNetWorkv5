@@ -944,21 +944,56 @@ $(document).on('click','#showVacancies',function(){
 });
 
 $(document).on('click','#MyApplications',function(){
-   $.ajax({
+   var flag="true";
+    $.ajax({
       beforeSend: function(){
-
+          $('#spinner').attr('class','loader');
       },
        url:"core/controller/getApplicationsController.php",
        type:"POST",
-       data:{},
-       success: function(){
+       data:{flg:flag},
+       success: function(msg){
+           if(msg==1){
+               alertify.alert("Aún no te has postulado a alguna vacante. No esperes más, hay nuevos empleos cada día.");
+                 $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡No te has potulado a una vacante aún!</strong> <a href='#' class='alert-link'>Pero no te precupes hay nuevos empleos cada día.</a></div>");
+           }else{
+               $('#middleTitle').text("Tus postulaciones.");
+               $('#middlePanel').html(msg);
+           }
+       },
+       error: function(){
+
+       },
+       complete: function(){
+           $('#spinner').attr('class','');
+       }
+   });
+});
+
+$(document).on('click','#personMessage',function(){
+   var flag="true";
+    $.ajax({
+      beforeSend: function(){
+          $('#spinner').attr('class','loader');
+      },
+       url:"core/controller/getPersonMessageController.php",
+       type:"POST",
+       data:{flg:flag},
+       success: function(msg){
+           if(msg==1){
+            alertify.alert("Sin mensajes");
+            $('#stateMessage').html("<div class='alert alert-dismissible alert-info'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Sin mensajes!</strong> <a href='#' class='alert-link'>Tu buzón de entrada esta vacío.</a></div>");
+           }else{
+               $('#middleTitle').text("Buzón");
+               $('#middlePanel').html(msg);
+           }
 
        },
        error: function(){
 
        },
        complete: function(){
-
+           $('#spinner').attr('class','');
        }
    });
 });

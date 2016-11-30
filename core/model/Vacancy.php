@@ -90,6 +90,36 @@ class Vacancy extends Connection{
         }
 
     }
+
+    public function getIdVacancy(){
+        $query="select empresa.nombre,vacante.puesto from empresa inner join vacante on empresa.idEmpresa=vacante.IdEmpresa "
+            ." where idVacante in(select idVacante from det_vacante where idPersona in"
+            ." (select idPersona from persona  where idUsuario= '".$_SESSION['session_id']."')) ";
+
+        $executeQuery=mysqli_query($this->getConnection(),$query) or die ("Error en verif id ".mysqli_error($this->getConnection()));
+        if(mysqli_num_rows($executeQuery)==0){
+            echo 1;
+        }else{
+                echo "<div class='jumbotron'>";
+                echo "<table id='tableMyPostulations' class='table table-inverse' style='td:hover; >";
+
+                echo "<thead>";
+                echo "<tr><td style='display:none'>
+                </td><td style='color:#ffffff;'>Empresa</td><td>Puesto</td></tr>";
+                echo "</thead>";
+
+                echo "<tbody>";
+                while($row = mysqli_fetch_array($executeQuery)){
+
+                echo "<tr style='color:#ffffff;'><td >".$row[0]." <i class='fa fa-suitcase fa-fw'></td><td>".$row[1]." <i class='fa fa-group fa-fw'></i></td></tr>";
+                }
+                echo "</tbody>";
+
+                echo "</table>";
+                echo "</div>";
+            }
+        }
+
 }
 
 ?>
