@@ -9,6 +9,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+                   <span><img src="assets/images/socialNetWorkSmall.png" height="40px" width="60px" alt="SocialNetWork"/></span>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="Close">&times;</button>
                     <h3 style="text-align:center;">¡Bienvenido!</h3>
                 </div>

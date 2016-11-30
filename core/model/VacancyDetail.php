@@ -41,7 +41,7 @@ class VacancyDetail extends Connection{
             echo "<tbody>";
             while($row2 = mysqli_fetch_array($rs2)){
 
-            echo "<tr style='color:#ffffff;'><td style='display:none'>".$row2[0]."</td><td >".$row2[1]."</td><td>".$row2[2]."</td></tr>";
+            echo "<tr style='color:#ffffff;'><td style='display:none'>".$row2[0]."</td><td >".$row2[1]." <i class='fa fa-suitcase fa-fw'></td><td>".$row2[2]." <i class='fa fa-group fa-fw'></i></td></tr>";
             }
             echo "</tbody>";
 

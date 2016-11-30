@@ -5,13 +5,43 @@ $(document).on('click', '#postVacancy', function() {
     //$('#middleTitle').text("Nueva Vacante");
     $('#middlePanel').html("<div id='datos' role='form'>"
                                     +"<div class='form-group row'>"
-                                        +"<label class='col-xs-2 col-form-label' for='txtName'>Nombre</label>"
+                                        +"<label class='col-xs-2 col-form-label' for='txtName'>Perfil</label>"
                                         +"<div class='col-xs-10'>"
-                                        +"<input type='text' class='form-control' placeholder='Perfil para la vacante' name='txtName' id='txtName'>"
+                                            +"<select class='form-control' id='txtName' name='txtName'>"
+                                                    +"<option value='0'>Selecciona el área </option>"
+                                                    +"<option value='Aeronáutica'>Aeronáutica</option>"
+                                                    +"<option value='Arquitectura'>Arquitectura</option>"
+                                                    +"<option value='Biotecnología'>Biotecnología</option>"
+                                                    +"<option value='Ciencias de la Tierra'>Ciencias de la Tierra</option>"
+                                                    +"<option value='Ciencias navales'>Ciencias navales</option>"
+                                                    +"<option value='Computación y sistemas'>Computación y sistemas</option>"
+                                                    +"<option value='Diseño'>Diseño</option>"
+                                                    +"<option value='Ingeniería ambiental'>Ingeniería ambiental</option>"
+                                                    +"<option value='Ingeniería bioquímica'>Ingeniería bioquímica</option>"
+                                                    +"<option value='Ingeniería civil'>Ingeniería civil</option>"
+                                                    +"<option value='Ingeniería de los transportes'>Ingeniería de los transportes</option>"
+                                                    +"<option value='Ingeniería eléctrica y electrónica'>Ingeniería eléctrica y electrónica</option>"
+                                                    +"<option value='Ingeniería en control, instrumentación y procesos'>Ingeniería en control, instrumentación y procesos</option>"
+                                                    +"<option value='Ingeniería en telecomunicaciones'>Ingeniería en telecomunicaciones</option>"
+                                                    +"<option value='Ingeniería en telemática'>Ingeniería en telemática</option>"
+                                                    +"<option value='Ingeniería energética'>Ingeniería energética</option>"
+                                                    +"<option value='Ingeniería extractiva y metalúrgica'>Ingeniería extractiva y metalúrgica</option>"
+                                                    +"<option value='Ingeniería física'>Ingeniería física</option>"
+                                                    +"<option value='Ingeniería hidráulica'>Ingeniería hidráulica</option>"
+                                                    +"<option value='Ingeniería industrial'>Ingeniería industrial</option>"
+                                                    +"<option value='Ingeniería mecánica y eléctrica'>Ingeniería mecánica y eléctrica</option>"
+                                                    +"<option value='Ingeniería oceánica'>Ingeniería oceánica</option>"
+                                                    +"<option value='Ingeniería química'>Ingeniería química</option>"
+                                                    +"<option value='Ingeniería textil'>Ingeniería textil</option>"
+                                                    +"<option value='Ingeniería topográfica'>Ingeniería topográfica</option>"
+                                                    +"<option value='Planeación'>Planeación</option>"
+                                                    +"<option value='Química industrial'>Química industrial</option>"
+                                                    +"<option value='Urbanismo'>Urbanismo</option>"
+                                            +"</select>"
                                     +"</div>"
                                     +"</div>"
                                     +"<div class='form-group row'>"
-                                        +"<label class='col-xs-2 col-form-label' for='txtVacancyPost'>Perfil </label>"
+                                        +"<label class='col-xs-2 col-form-label' for='txtVacancyPost'>Cargo</label>"
                                         +"<div class='col-xs-10'>"
                                         +"<input type='text' class='form-control' placeholder='Cargo a desempeñar' id='txtVacancyPost' name='txtVacancyPost'>"
                                     +"</div>"
@@ -19,7 +49,7 @@ $(document).on('click', '#postVacancy', function() {
                                     +"<div class='form-group row'>"
                                         +"<label class='col-xs-2 col-form-label' for='txtTypeWorking'>Tipo de jornada</label>"
                                         +"<div class='col-xs-10'>"
-                                        +"<input type='text' class='form-control' placeholder='Jornada'id='txtTypeWorking' name='txtTypeWorking'>"
+                                        +"<input type='text' class='form-control' placeholder='Contrato/Completa/Media jornada/Becario'id='txtTypeWorking' name='txtTypeWorking'>"
                                     +"</div>"
                                     +"</div>"
                                     +"<div class='form-group row'>"
@@ -59,10 +89,10 @@ $(document).on('click', '#postVacancy', function() {
                                     +"<div class='form-group row'>"
                                         +"<label class='col-xs-2 col-form-label' for='txtExpirationDate'>Fecha expiración</label>"
                                         +"<div class='col-xs-10'>"
-                                        +"<input type='text' class='form-control' placeholder='Termina el día' id='txtExpirationDate' name='txtExpirationDate'>"
+                                        +"<input type='text' class='form-control' id='txtExpirationDate' name='txtExpirationDate'>"
                                     +"</div>"
                                     +"</div>"
-                                    +"<input type='submit' value='enviar' class='btn btn-black' id='savePost' name='savePost'> "
+                                    +"<input type='submit' value='guardar' class='btn btn-success' id='savePost' name='savePost'> "
                                 +"</div>");
 });
 
@@ -93,7 +123,7 @@ $(document).on('click', '#savePost', function() {
     var comments = $('#txtAcoments').val();
     var expirationDate = $('#txtExpirationDate').val();
 
-    var flag1 = (vacancyName.trim == "" || vacancyName.length === 0) ? 0 : 1;
+    var flag1 = (vacancyName == 0) ? 0 : 1;
     var flag2 = (vacancyPost.trim == "" || vacancyPost.length === 0) ? 0 : 1;
     var flag3 = (typeWorking.trim == "" || typeWorking.length === 0) ? 0 : 1;
     var flag4 = (numberVacancies.trim == "" || numberVacancies.length === 0) ? 0 : 1;

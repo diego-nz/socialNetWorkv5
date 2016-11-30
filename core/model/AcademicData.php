@@ -105,6 +105,26 @@ class AcademicData extends Connection{
         }*/
     }
 
+    public function addAcademicData($isStudying,$grade,$schoolName,$begin,$end,$lastYear){
+        $query="SELECT datos_prof.idCurriculum FROM datos_prof "
+        ." INNER JOIN curriculum ON datos_prof.idCurriculum=curriculum.idCurriculum "
+        ." INNER JOIN persona ON curriculum.idPersona=persona.idPersona"
+        ." INNER JOIN usuario ON persona.idUsuario=usuario.idUsuario WHERE usuario.idUsuario='".$_SESSION['session_id']."' ";
+
+        $executeQuery=mysqli_query($this->getConnection(),$query) or die("Error query a".mysqli_error($this->getConnection()));
+
+        if($executeQuery){
+            $row=mysqli_fetch_array($executeQuery);
+
+            $query2="INSERT INTO datos_acad VALUES(null,$row[0],'".$isStudying."','".$grade."','".$schoolName."',"
+                        ." '".$begin."','".$end."','".$lastYear."')";
+            $executeQuery2=mysqli_query($this->getConnection(),$query2) or die("Error adding academic".mysqli_error($this->getConnection()));
+            if($executeQuery2){
+                echo 1;
+            }
+        }
+    }
+
 }
 
 ?>
