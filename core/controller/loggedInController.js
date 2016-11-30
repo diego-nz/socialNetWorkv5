@@ -36,7 +36,7 @@ $(document).ready(function() {
                                     +"<a href='#' class='list-group-item' id='postVacancy'>Publicar</a>"
                                     +"<a href='#' class='list-group-item' id='reviewPost'>Revisar Vacantes Publicadas</a>"
                                     +"<a href='#' class='list-group-item' id='companyMessage'>Mensajes</a>"
-                                    +"<a href='#' class='list-group-item' id='scheduleInterview'>Agendar Cita Entrevista</a>"
+                                    +"<a href='' class='list-group-item' id='scheduleInterview'>Agendar Cita Entrevista</a>"
                                     +"<a href='#' class='list-group-item' id='makeCall'>Realizar Videollamada</a>"
                                     +"</div>");
                 $.getScript( "core/controller/loggedInCompanyController.js", function( data, textStatus, jqxhr ) {

@@ -188,10 +188,11 @@ $(document).on('click','#tableDetailVacancy tbody tr',function(){
                alertify.alert(data);
             }
         }
-
-
-
     });
     }
+});
+
+$(document).on('click','#scheduleInterview',function(){
+    alert();
 });
 
