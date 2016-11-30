@@ -173,6 +173,7 @@ include_once ('view/overAll/signUpTopNav.html');
                              <div id="typePersonRFCDiv">
 
                              </div>
+                             <input type="checkbox" class="form-control" id="checkTermEmp"/><a href="#" onclick="window.open('Terminos-y-condiciones.pdf')">He leido terminos y condiciones</a>
 
                              <?php
                               }else{
@@ -188,7 +189,7 @@ include_once ('view/overAll/signUpTopNav.html');
                                 <option value="M">Maculino</option>
                                 <option value="F">Femenino</option>
                             </select>
-
+                        <input type="checkbox" class="form-control" id="checkTermPer"/><a href="#" onclick="window.open('Terminos-y-condiciones.pdf')">He leido terminos y condiciones</a>
                             <?php
                               }
                             ?>
