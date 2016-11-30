@@ -50,7 +50,7 @@ function login(){
 
             },error: function(jqXHR,textstatus,errorThrown){
                // console.error(xhr.status +": "+ xhr.statusText);
-                alert("Error: "+jqXHR.resoponseText +" "+textstatus.resoponseText+ " " +errorThrown.resoponseText);
+                //alert("Error: "+jqXHR.resoponseText +" "+textstatus.resoponseText+ " " +errorThrown.resoponseText);
             },
             complete:function(){
                 $('#spinner').attr('class','');
@@ -60,3 +60,15 @@ function login(){
 
     }
 }
+
+$(document).on('focus','#txtPasswordLogin',function(){
+   $('#passwordInfo').text("Te recomendamos una contraseña de mínimo 8 caracteres.");
+});
+
+$(document).on('focusout','#txtPasswordLogin',function(){
+   $('#passwordInfo').text("");
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});

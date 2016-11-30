@@ -18,7 +18,7 @@ $(document).ready(function(){
             }
         },
         error: function (jqXHR,status,error) {
-            alert(jqXHR+status+error);
+            //alert(jqXHR+status+error);
         },complete: function (jqXHR,status){
             $('#postulateToVacancy').on({
                 mouseenter: function(){
@@ -49,7 +49,7 @@ $(document).on('click','#postulateToVacancy',function(){
             alertify.alert("Se ha postulado correctamente a la vacante");
         },
         error: function (jqXHR,status,error){
-            alert(jqXHR+status+error);
+            //alert(jqXHR+status+error);
         }
     });
 });
@@ -150,7 +150,7 @@ $(document).on('click','.updateAcademic',function(){
             $('#saveAcademic').show();
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+            //console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -290,7 +290,7 @@ $(document).on('click','.deleteProfessional',function(){
             }
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+            //console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -315,7 +315,7 @@ $(document).on('click','#courses' ,function(){
             $('#displayCourses').append("<hr><button class='btn-xs btn-success' id='addCourseBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
        },
        error: function(jqXHR,status,error){
-           console.error(jqXHR.responseXML+status+error);
+           //console.error(jqXHR.responseXML+status+error);
        },
         complete: function(jqXHR){
             $('#spinner').attr('class','');
@@ -340,7 +340,7 @@ $(document).on('click','.updateCourse',function(){
             $('#saveCourse').show();
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+            //console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -456,7 +456,7 @@ $(document).on('click','.deleteCourse',function(){
             }
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+           // console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -482,7 +482,7 @@ $(document).on('click','#workingExperience' ,function(){
 
        },
        error: function(jqXHR,status,error){
-           console.error(jqXHR.responseXML+status+error);
+          // console.error(jqXHR.responseXML+status+error);
        },
         complete: function(jqXHR){
             $('#spinner').attr('class','');
@@ -514,7 +514,7 @@ $(document).on('click','.updateWork',function(){
             $('#saveWork').show();
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+            //console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -589,7 +589,7 @@ $(document).on('click','.deleteWork',function(){
             }
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+            //console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -614,7 +614,7 @@ $(document).on('click','#languages',function(){
             $('#displayLanguage').append("<hr><button class='btn-xs btn-success' id='addLanguageBtn' data-toggle='modal' data-target='#modalUpdate'>Nuevo <i class='fa fa-plus fa-fw'></i></button>");
        },
        error: function(jqXHR,status,error){
-           console.error(jqXHR.responseXML+status+error);
+           //console.error(jqXHR.responseXML+status+error);
        },
         complete: function(jqXHR){
             $('#spinner').attr('class','');
@@ -640,7 +640,7 @@ $(document).on('click','.updateLanguage',function(){
             $('#saveLanguage').show();
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+           // console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');
@@ -714,7 +714,7 @@ $(document).on('click','.deleteLanguage',function(){
             }
         },
         error: function(jqXHR,error,status){
-            console.error(jqXHR.responseXML+error.responseText+status.response);
+            //console.error(jqXHR.responseXML+error.responseText+status.response);
         },
         complete: function(){
             $('#spinner').attr('class','');

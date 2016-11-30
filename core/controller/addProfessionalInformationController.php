@@ -8,8 +8,6 @@ if(isset($_POST["flg"]) and $_POST["flg"]=="true"){
     $objProfInfo = new ProfessionalInformation();
     $objProfInfo -> addProfessionalInformation($degree,$cedule);
 
-}else{
-    echo "no";
 }
 
 ?>

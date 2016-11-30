@@ -161,7 +161,7 @@ $(document).on('click', '#savePost', function() {
                 $('#middleTitle').text("");
             },
             error: function(jqXHR, status, error) {
-                alert("Error " + jqXHR + " " + status + " " + error);
+                //alert("Error " + jqXHR + " " + status + " " + error);
             }
         });
     }else{

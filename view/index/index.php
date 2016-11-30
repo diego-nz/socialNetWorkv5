@@ -28,6 +28,7 @@
                                 <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
                                 <input type="password" class="form-control" name="txtPasswordLogIn" id="txtPasswordLogin" placeholder="Contraseña">
                             </div>
+                            <p class="help-block text-info" id="passwordInfo"><small> </small></p>
                         </div>
                     </div>
 
@@ -133,7 +134,7 @@
                 <div class="container">
                     <div class="card cart-block">
                         <div class="card-img">
-                            <a href="?view=signUp&type=1"><img src="assets/images/empresa-600x600-48.png" class="card-img-top" alt="Persona" id="imgPerson"></a>
+                            <a href="?view=signUp&type=1" data-toggle="tooltip" title="!Soy empresa!" data-placement="bottom"><img src="assets/images/empresa-600x600-48.png" class="card-img-top" alt="Persona" id="imgPerson"></a>
                         </div>
                     </div>
                 </div>
@@ -154,7 +155,7 @@
                     <div class="container">
                         <div class="card cart-block">
                             <div class="card-img">
-                                <a href="?view=signUp&type=2"><img src="assets/images/persona-600x600-10.png" class="card-img-top" alt="Persona" id="imgPerson"></a>
+                                <a href="?view=signUp&type=2" data-toggle="tooltip" title="!Soy persona!" data-placement="bottom"><img src="assets/images/persona-600x600-10.png" class="card-img-top" alt="Persona" id="imgPerson"></a>
                             </div>
 
                         </div>
@@ -175,9 +176,13 @@
                            <br>
                            <br>
                            <br>
+                           <br>
+                           <br>
+                           <br>
                             <span class="card-title">¿Quienés somos?</span>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, nulla, tempore! Atque, animi? Beatae distinctio incidunt eaque, aspernatur, ipsum quos maiores voluptatum nam, ad inventore voluptatem praesentium dolores maxime perferendis.
+                              <p class="text-justify">
+                               Nuestra historia comienza en el año 2015, a través de un grupo de jóvenes emprendedores que tenían una finalidad en común, crear una empresa que ayudará a las personas a encontrar nuevas y mejores soluciones de acuerdo a sus necesidades mediante el desarrollo de tecnologías innovadoras.</p>
                             </div>
                         </div>
                     </div>
@@ -188,6 +193,9 @@
                 <div class="container">
                     <div class="card cart-block">
                         <div class="card-block">
+                           <br>
+                           <br>
+                           <br>
                            <br>
                            <br>
                            <br>
@@ -197,7 +205,7 @@
                            <br>
                             <span class="card-title">Misión</span>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, nulla, tempore! Atque, animi? Beatae distinctio incidunt eaque, aspernatur, ipsum quos maiores voluptatum nam, ad inventore voluptatem praesentium dolores maxime perferendis.
+                               <p class="text-justify">Prestar servicios de calidad, ofreciendo las mejores soluciones a cualquier necesidad en el área de TI.</p>
                             </div>
                         </div>
                     </div>
@@ -208,6 +216,9 @@
                 <div class="container">
                     <div class="card cart-block">
                         <div class="card-block">
+                           <br>
+                           <br>
+                           <br>
                            <br>
                            <br>
                            <br>
@@ -217,7 +228,7 @@
                            <br>
                             <span class="card-title">Visión</span>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, nulla, tempore! Atque, animi? Beatae distinctio incidunt eaque, aspernatur, ipsum quos maiores voluptatum nam, ad inventore voluptatem praesentium dolores maxime perferendis.
+                               <p class="text-justify">Ser considerados líderes en el ámbito de desarrollo Web a nivel nacional para la administración del área de recursos humanos.</p>
                             </div>
                         </div>
                     </div>
@@ -234,11 +245,18 @@
                            <br>
                            <br>
                            <br>
-
+                           <br>
+                           <br>
+                           <br>
 
                             <span class="card-title">Valores</span>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, nulla, tempore! Atque, animi? Beatae distinctio incidunt eaque, aspernatur, ipsum quos maiores voluptatum nam, ad inventore voluptatem praesentium dolores maxime perferendis.
+                               <p class="text-justify"><ul>
+                                    <li>Calidad: Cada uno de nuestros productos ofrece excelencia. Responsabilidad: La satisfacción de nuestro cliente es primero.</li>
+                                    <li>Puntualidad: Todo trabajo es de suma importancia.</li>
+                                    <li>Originalidad: Estamos al día en cuanto a tecnología se refiere, cada trabajo es único.</li>
+                                    <li>Servicio: Nuestro trabajo es una muestra de que nuestros clientes en realidad nos importan.</li>
+                                </ul></p>
                             </div>
                         </div>
                     </div>
