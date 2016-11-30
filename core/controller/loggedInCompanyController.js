@@ -266,3 +266,26 @@ $(document).on('click','#scheduleInterview',function(){
     alert();
 });
 
+$(document).on('click','#companyMessage',function(){
+   var flag="true";
+    $.ajax({
+        type: 'POST',
+        url: 'core/controller/sendMessageCompanyController.php',
+        data:{flg:flag},
+        success:function(data){
+            if(data==1){
+
+            }else{
+                $('#middleTitle').text("Mensajes");
+                $('#middlePanel').html(data);
+            }
+        },
+        error: function(){
+
+        },
+        complete: function(){
+
+        }
+    });
+});
+
