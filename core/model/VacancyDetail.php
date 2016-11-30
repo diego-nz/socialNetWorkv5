@@ -15,7 +15,7 @@ class VacancyDetail extends Connection{
 
     public function checkStatusVacancy(){
         $query="SELECT idEmpresa FROM empresa WHERE idUsuario = ".$_SESSION['session_id']."";
-        $rs = mysqli_query($this->getConnection(),$query) or die ("ERROR AL EJECUTAR LA CONSULTA" . mysqli_error($this->getConnection()));
+        $rs = mysqli_query($this->getConnection(),$query) or die ("ERROR AL EJECUTAR LA CONSULTA " . mysqli_error($this->getConnection()));
 
         $row = mysqli_fetch_array($rs);
 
@@ -30,8 +30,6 @@ class VacancyDetail extends Connection{
             echo 1;
 
         }else{
-
-
             echo "<div class='jumbotron'>";
             echo "<table id='tableDetailVacancy' class='table table-inverse' style='td:hover; cursor:pointer;>";
 
@@ -50,6 +48,21 @@ class VacancyDetail extends Connection{
             echo "</table>";
             echo "</div>";
         }
+
+    }
+
+    public function getNuPersons($idVacancy){
+        $query = "SELECT count(*)as contador FROM det_vacante WHERE idVacante=".$idVacancy." ";
+        $rs = mysqli_query($this->getConnection(),$query) or die ("ERROR ".mysqli_error($this->getConnection()));
+
+        $fila = mysqli_fetch_array($rs);
+
+        if($fila['contador'] == 0){
+            echo 1;
+        }else{
+            echo "Numero de postulantes: ".$fila['contador'];
+        }
+
 
     }
 

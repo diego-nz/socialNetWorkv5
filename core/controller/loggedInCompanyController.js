@@ -66,6 +66,22 @@ $(document).on('click', '#postVacancy', function() {
                                 +"</div>");
 });
 
+$(document).on('focus','#txtExpirationDate',function(){
+     $('#txtExpirationDate').datepicker({
+        dateFormat: "yy/mm/dd",
+         minDate:0,
+         //changeYear:"false",
+        //yearRange:"2016: ",
+        //changeMonth: "true",
+        dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+        dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+        firstDay: 1,
+        //gotoCurrent: true,
+        monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+     });
+});
+
+
 $(document).on('click', '#savePost', function() {
     var vacancyName = $('#txtName').val();
     var vacancyPost = $('#txtVacancyPost').val();
@@ -139,15 +155,12 @@ $(document).on('click', '#reviewPost', function() {
                                        +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡UPS! Parece que aun no tienes vacantes disponibles</strong>"
                                        +"<a href='#' class='alert-link'> No esperes mas, por favor agrega una nueva vacante </a></div>");
             }else{
-
                 $('#middlePanel').html(data);
+
             }
         }
 
     });
-
-
-
 });
 
 //tableDetailVacancy Tabla para darle evento
@@ -156,7 +169,29 @@ $(document).on('click','#tableDetailVacancy tbody tr',function(){
     var nTds = $('td', this);
     var idVacancy;
     idVacancy = $(nTds[0]).text();
+    //alert(idVacancy);
 
-    alert(idVacancy);
+    if(idVacancy == 'Puesto'){
+
+    }else{
+    $.ajax({
+        type: 'POST',
+        url: 'core/controller/numPostVacancyController.php',
+        data:{
+            idVacancy:idVacancy
+        },success:function(data){
+
+            if(data == 1){
+         alertify.alert("Parece que aun no hay postulantes en tu vacante");
+
+            }else{
+               alertify.alert(data);
+            }
+        }
+
+
+
+    });
+    }
 });
 
