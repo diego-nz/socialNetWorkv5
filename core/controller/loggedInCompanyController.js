@@ -190,8 +190,8 @@ $('#stateMessage').empty();
         success:function(data){
             if(data == 1){
                  $('#middlePanel').html("<div class='alert alert-dismissible alert-danger'>"
-                                       +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡UPS! Parece que aun no tienes vacantes disponibles</strong>"
-                                       +"<a href='#' class='alert-link'> No esperes mas, por favor agrega una nueva vacante </a></div>");
+                                       +"<button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡OPS! Parece que aun no tienes vacantes disponibles</strong>"
+                                       +"<a href='#' class='alert-link'> No esperes más, por favor agrega una nueva vacante. </a></div>");
             }else{
                 $('#middlePanel').html(data);
 

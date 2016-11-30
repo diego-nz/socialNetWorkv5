@@ -1,12 +1,14 @@
 function enterLogin(e){
 
     if(e.keyCode==13){
+
         login();
     }
 
 }
 
 function login(){
+
     var user=$('#txtUserLogin').val();
     var password=$('#txtPasswordLogin').val();
     if(user.length === 0){
@@ -21,6 +23,7 @@ function login(){
         $('#loginError').alert('close');
         $.ajax({
             beforeSend:function(){
+            $('#passwordInfo').hide();
             $('#modalLogin').attr('class','modal fade out');
             $('#spinner').attr('class','loader');
             },
@@ -62,12 +65,10 @@ function login(){
 }
 
 $(document).on('focus','#txtPasswordLogin',function(){
-   $('#passwordInfo').text("Te recomendamos una contraseña de mínimo 8 caracteres.");
+   $('#passwordInfo').show();
 });
 
-$(document).on('focusout','#txtPasswordLogin',function(){
-   $('#passwordInfo').text("");
-});
+
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
