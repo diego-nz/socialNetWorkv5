@@ -33,6 +33,21 @@ $(document).ready(function() {
             if (msg == 1) {
                      //Empresa
                 $('#panelContent').html("<div class='list-group'>"
+<<<<<<< HEAD
+                                    +"<a href='#' class='list-group-item' id='postVacancy'>Publicar</a>"
+                                    +"<a href='#' class='list-group-item' id='reviewPost'>Revisar Vacantes Publicadas</a>"
+                                    +"<a href='#' class='list-group-item' id='companyMessage'>Mensajes</a>"
+                                    +"<a href='' class='list-group-item' id='scheduleInterview'>Agendar Cita Entrevista</a>"
+                                    +"<a href='#' class='list-group-item' id='makeCall'>Realizar Videollamada</a>"
+                                    +"</div>");
+                $.getScript( "core/controller/loggedInCompanyController.js", function( data, textStatus, jqxhr ) {
+                    //console.log( data ); // Data returned
+                    //console.log( textStatus ); // Success
+                    //console.log( jqxhr.status ); // 200
+                });
+            } else if (msg == 2) {
+                //Persona
+=======
                                     +"<a href='#' class='list-group-item' id='postVacancy'>Publicar <i class='fa fa-sticky-note fa-fw'></i></a>"
                                     +"<a href='#' class='list-group-item' id='reviewPost'>Revisar Vacantes Publicadas <i class='fa fa-search fa-fw'></i></a>"
                                     +"<a href='#' class='list-group-item' id='companyMessage'>Mensajes <i class='fa fa-envelope fa-fw'></i></a>"
@@ -46,6 +61,7 @@ $(document).ready(function() {
                 });
             } else if (msg == 2) {
                 //Persona
+>>>>>>> origin/master
                 $('#panelContent').html("<div class='list-group'>"
                                     +"<a href='#' class='list-group-item' id='MyApplications'>Mis Postulaciones <i class='fa fa-file fa-fw'></i></a>"
                                     +"<a href='#' class='list-group-item' id='updateResume'>Actualizar Curriculum <i class='fa fa-vcard fa-fw'></i> </a>"
