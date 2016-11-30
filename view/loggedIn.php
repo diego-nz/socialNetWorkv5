@@ -37,6 +37,7 @@
 
                             <div id="middlePanel">
 
+
                             </div>
                         </div>
                     </div>

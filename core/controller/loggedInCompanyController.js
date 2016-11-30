@@ -1,3 +1,12 @@
+window.URL = window.URL || window.webkitURL;
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia ||
+function() {
+    alert('Su navegador no soporta navigator.getUserMedia().');
+};
+window.datosVideo = {
+    'StreamVideo': null,
+    'url': null
+}
 $(document).on('click', '#postVacancy', function() {
     $('#middlePanel').empty();
 
@@ -219,6 +228,42 @@ $(document).on('click','#tableDetailVacancy tbody tr',function(){
     });
     }
 });
+
+$(document).on('click','#makeCall',function(){
+    $('#middlePanel').empty();
+
+    $('#stateMessage').html('<table text-align="center"></td><td><input type="button" id="btnStartVideo" class="btn btn-success" value="Iniciar"/></td><td><input type="button" id="btnFinishVideo" class="btn btn-error" value="Detener"/></td></tr></table>');
+
+    $('#middlePanel').html("<video id='camara' autoplay controls width='525' height='350'></video>");
+
+
+});
+
+$(document).on('click','#btnStartVideo', function() {
+
+    //Pedimos al navegador que nos da acceso a
+    //algún dispositivo de video (la webcam)
+    navigator.getUserMedia({
+        'audio': true,
+        'video': true
+    }, function(streamVideo) {
+        datosVideo.StreamVideo = streamVideo;
+        datosVideo.url = window.URL.createObjectURL(streamVideo);
+        jQuery('#camara').attr('src', datosVideo.url);
+
+    }, function() {
+        alert('No fue posible obtener acceso a la cámara.');
+    });
+
+});
+
+$(document).on('click','#btnFinishVideo',function(){
+    window.location.reload();
+});
+
+
+
+kdshjgfkjfhjgfd
 
 $(document).on('click','#scheduleInterview',function(){
     alert();
