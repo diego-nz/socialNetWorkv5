@@ -264,10 +264,6 @@ $(document).on('click','#btnFinishVideo',function(){
 });
 
 
-
-kdshjgfkjfhjgfd
->>>>>>> origin/master
-
 $(document).on('click','#scheduleInterview',function(){
     alert();
 });
